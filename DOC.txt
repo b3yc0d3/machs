@@ -78,3 +78,9 @@ Classes
 
     * set_raw(key, value)
         Value will be set "as it is". Nothing fancy to it.
+
+Machs library functions
+=======================
+
+* machs.version
+    Returns the current version

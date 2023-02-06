@@ -20,9 +20,24 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import sys
+PYTHON_VERSION = [str(n) for n in [sys.version_info.major, sys.version_info.minor, sys.version_info.micro]]
+PYTHON_VERSION_INT = int("".join(PYTHON_VERSION))
+PYTHON_VERSION_HUMAN = ".".join(PYTHON_VERSION)
+
+if not PYTHON_VERSION_INT > 3100:
+    print(f"Sorry, your python `PYTHON_VERSION_HUMAN` version isn't campatable.\nPython 3.9 or newer is required")
+    exit(1)
+
 from mlib.std import *
 from mlib.var import *
 from mlib.project import *
 from mlib.command import *
 from mlib.dependencys import *
 from mlib.onfiguration import *
+from mlib.internals import *
+
+# Non mutable dict for lib infos
+machs = ConstDict({
+    "version": "0.1.0"
+})
