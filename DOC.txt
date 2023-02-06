@@ -1,0 +1,80 @@
+Functions
+=========
+
+* project(name, lang, version)
+    | Args    | Value |
+    +---------+-------+
+    | name    | str   |
+    | lang    | str   |
+    | version | str   |
+
+    Used for initialize the project
+
+* project_name()
+    Used to optain the current name of the project.
+    (Can be used anywhere after the project initialization)
+
+* project_version()
+    Used to optain the current version of the project,
+    which is set in the initialization.
+    (Can be used anywhere after the project initialization)
+
+* project_root()
+    Used to optain the root path of the project.
+    (Can be used anywhere after the project initialization)
+
+* run_command(..args)
+    | Args    | Value |
+    +---------+-------+
+    | args    | str   |
+
+    Gives the ability to run any command with arguments.
+
+* subdir(..dirs)
+    | Args    | Value |
+    +---------+-------+
+    | dirs    | str   |
+
+    Specifies if there are any subdirectories which also contain build scripts.
+
+* dependency(name)
+    | Args    | Value |
+    +---------+-------+
+    | name    | str   |
+
+    Checks if program of `name` is installed. It exits with status code of 1
+    if program of `name` cannot be found.
+
+* var(key, ?value)
+    | Args    | Value |
+    +---------+-------+
+    | key     | str   |
+    | value   | any   |
+
+    Create variables and get values of it.
+
+* configure_file(input, output, configuration)
+    Replaces all placeholder keywords in a file. Value of `configuration` is a
+    `ConfigurationData` object.
+
+Classes
+=======
+
+* ConfigurationData
+    Used to create a configuration object.
+
+    --- py
+    1    conf = ConfigurationData()
+    2    conf.set_quoted("name", "John Dohe")
+    3    conf.set_digit("birth", 2000)
+    4    conf.set_raw("calc_it", "[print(n) for n in y]")
+    ---
+
+    * set_quoted(key, value)
+        Set value as quited. (Quoted will be in `"`, by default)
+    
+    * set_digit(key, value)
+        Set value as digit.
+
+    * set_raw(key, value)
+        Value will be set "as it is". Nothing fancy to it.
