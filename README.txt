@@ -14,8 +14,16 @@ how i started that thingy.
 You find the full Documentation in the "DOC.txt" file.
 Feel free to contribute to this project.
 
-Quick Start
-===========
+
+Table of Contents
+=================
+
+  1. Quick Start
+  2. Build
+
+
+1. Quick Start
+==============
 
 1.) Download the newest release.
 2.) Extract the `mlib` folder and place it in your project root directory.
@@ -33,40 +41,56 @@ Project structure (just a example):
 The files named "machs" are the python scripts, that will build your stuff.
 
 "machs" in the project root
------- py / MyProject/machs
-1    from mlib import *
-2
-3    project("name", "language", "0.1.0")
-4
-5    dependency("echo")
-6
-7    var("type", "release")
-8
-9    subdir("src")
-------
+    ------ py / MyProject/machs
+    1    from mlib import *
+    2
+    3    project("name", "language", "0.1.0")
+    4
+    5    dependency("echo")
+    6
+    7    var("type", "release")
+    8
+    9    subdir("src")
+    ------
 
 The "machs" file in src subfolder
------- py / MyProject/src/machs
-1     from mlib import *
-2
-4     conf = ConfigurationData()
-5     conf.set_quoted("VERSION", project_version())
-6     conf.set_quoted("APPLICATION_ID", var("application_id"))
-7
-8     configure_file(
-9         input="config.h.in",
-10        output="config.h",
-11        configuration=conf
-12    )
-------
+    ------ py / MyProject/src/machs
+    1     from mlib import *
+    2
+    4     conf = ConfigurationData()
+    5     conf.set_quoted("VERSION", project_version())
+    6     conf.set_quoted("APPLICATION_ID", var("application_id"))
+    7
+    8     configure_file(
+    9         input="config.h.in",
+    10        output="config.h",
+    11        configuration=conf
+    12    )
+    ------
 
 The "config.h.in" file
------- py / MyProject/src/config.h.in
-1    const char* VERSION = @VERSION@;
-2    const char* APPLICATION_ID = @APPLICATION_ID@;
-------
+    ------ py / MyProject/src/config.h.in
+    1    const char* VERSION = @VERSION@;
+    2    const char* APPLICATION_ID = @APPLICATION_ID@;
+    ------
 
 Now you can run the "machs" script in the project root directory. After it is
 finished, it should have create a "config.h", every value that is inclosuhred
 by `@` should now be replaced with its acording value the we specified brefore
 in the "MyProject/src/machs" script.
+
+
+2. Build
+========
+
+In order to be able to use the `bundle.sh` script, you need to have
+python 3 installed. For the bundle you can use ANY python 3 versions.
+
+There isn't much to build, you just need to run the `bundle.sh` and there you
+have your `mlib.zip`.
+The `mlib.zip` includes:
+
+    - DOC.txt
+    - README.txt
+    - LICENSE
+    - /mlib
