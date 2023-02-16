@@ -25,8 +25,8 @@ PYTHON_VERSION = [str(n) for n in [sys.version_info.major, sys.version_info.mino
 PYTHON_VERSION_INT = int("".join(PYTHON_VERSION))
 PYTHON_VERSION_HUMAN = ".".join(PYTHON_VERSION)
 
-if not PYTHON_VERSION_INT > 3100:
-    print(f"Sorry, your python `PYTHON_VERSION_HUMAN` version isn't campatable.\nPython 3.9 or newer is required")
+if not PYTHON_VERSION_INT >= 3100:
+    print(f"Sorry, your python `{PYTHON_VERSION_HUMAN}` version isn't campatable.\nPython 3.10 or newer is required")
     exit(1)
 
 from mlib.std import *
@@ -39,5 +39,5 @@ from mlib.internals import *
 
 # Non mutable dict for lib infos
 machs = ConstDict({
-    "version": "0.1.0"
+    "version": "0.1.1"
 })

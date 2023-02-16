@@ -26,8 +26,8 @@ import subprocess
 def run_command(*args):
     try:
         res = subprocess.Popen(args, stdout=subprocess.PIPE)
-    except OSError:
-        print("error: popen")
+    except OSError as e:
+        print(e)
         exit(-1) # if the subprocess call failed, there's not much point in continuing
     
     res.wait()
